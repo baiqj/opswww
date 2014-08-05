@@ -37,5 +37,10 @@ def upload(request):
 	return render_to_response('upload.html', context_instance=RequestContext(request))
 
 
+##  test area  ##
+
 def transfer(request):
 	return render_to_response('transfer.html')
+	
+def server_manage(request):
+	return render_to_response('server_manage.html')

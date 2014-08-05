@@ -12,4 +12,5 @@ urlpatterns = patterns('',
 	url(r'^download/filename=(?P<filename>.{1,500})/$', 'opswww.views.download'),
 	url(r'^upload/$', 'opswww.views.upload'),
 	url(r'^transfer/$', 'opswww.views.transfer'),
+	url(r'^server_manage/$', 'opswww.views.server_manage'),
 )

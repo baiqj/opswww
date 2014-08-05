@@ -1,0 +1,102 @@
+<html>
+	
+  	<head>
+    	<style>
+			body{
+
+			}
+		
+			#TransferDiv{
+		  		position:relative;
+		  		float:right;
+		  		width:68%;
+          		height:100%;
+          		border:1px solid #ccc;
+			}
+			
+			#filelist{
+				border:1px solid #ccc;
+				background:#e1e1e1;
+				border-bottom-style:none;
+			}
+			
+			#left{
+				position:relative;
+				float:left;
+				min-width:20px;
+				display:inline-block;
+				width:45%;
+				padding:5px 0 0 6px;
+				height:280px;
+			}
+			
+			#middle{
+				position:relative;
+				width:5%;
+				display:inline-block;
+				margin:20% 0 30% 1%;
+			}
+			
+			#right{
+				position:relative;
+				float:right;
+				min-width:20px;
+				display:inline-block;
+				width:45%;
+				padding:5px 5px 0 0;
+				height:280px;
+			}
+
+			#selected{
+				border:1px solid #ccc;
+				background:#97b6d6;
+				border-bottom-style:none;
+			}
+			
+			#selected select{
+				display: block;width:100%;height: 90%;border: 1px solid #ccc;margin:0px 10px 0 0;
+			}
+
+		</style>
+  	</head>
+
+  	<body>
+	
+  		<div id="TransferDiv">
+
+    		<div id="left">
+
+        		<div id="filelist">File List:</div>
+
+        		<select size="10"  multiple="MULTIPLE" id="fileLists" style="display:block;width:100%;height: 80%;border: 1px solid #ccc;overflow:auto"></select>
+        		<br />
+        		<button  id="chooseall" class="btn btn-primary" style="margin-left:30%"> Choose All </button>
+
+			</div>
+
+            <div id=middle>
+
+                <button  id="movetoright" class="btn btn-primary btn-small" style="display:block;"> >> </button>
+                <br />
+                <button  id="movetoleft"  class="btn btn-primary btn-small"> << </button>
+
+            </div>
+
+            <div id=right>
+
+                <div id="selected">Selected Files:</div>
+
+                <select size="12" id="selectedFiles" style="display: block;width:100%;height: 90%;border: 1px solid #ccc;margin:0px 10px 0 0"></select>
+                <br />
+                <button  id="removeall" class="btn btn-primary" style="margin-left:30%"> Remove All </button>
+
+                <h5 style="padding:0 5px 0 10px;">Remote Path: <input type="text" id="remotepath" style ="width:60%;margin-left:5px" value="/tmp/"/></h5>
+
+    		</div>
+
+  		</div>
+
+  	</body>
+
+</html>
+

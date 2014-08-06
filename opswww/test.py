@@ -1,13 +1,20 @@
 #!/usr/local/bin/python2.7
 
-from fabapi import *
+import settings
+from sshapi import *
 
-fab = Fabhandler('192.168.1.119', 'helloworld', 'hello', '/root/anaconda-ks.cfg', '/root/workspace/opswww/resource/download')
+host = 'vm1'
+port = 22
+username = 'root'
+password = '123456'
+command = 'ls -l /home'
+src_path = '/root/sockClient.py'
+dst_path = '/home/samba/workspace/opswww/resource/download/sockClient.py.bak'
 
-#run_result = fab.fabrun()
-#print '-----'
-#print 'Ex:%s' % run_result
-
-get_result = fab.fabget()
-print '======'
-print get_result
+#output = runCommand(host, port, username, password, command)
+#print output
+output = sftpGet(host, port, username, password, src_path, dst_path)
+if not output:
+	print 'success'
+else:
+	print output

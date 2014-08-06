@@ -1,0 +1,17 @@
+#!/usr/local/bin/python2.7
+
+import socket
+
+ADDR = ('vm0', 2222)
+STRLEN = 10240
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.connect(ADDR)
+while True:
+	content = raw_input('> ')
+	if content == 'quit' or content == 'exit':
+		sock.close()
+		print 'Client has been closed!'
+		break
+	print 'Run Command: %s' % (content)
+  	sock.send(content)
+	print '--> %s' % (sock.recv(STRLEN))

@@ -8,6 +8,9 @@ import settings
 import os
 
 
+def index_page(request):
+	return render_to_response('index.html')
+
 def download(request, filename):
 
 	filepath = os.path.join(settings.DOWNLOAD_DIR, filename)
@@ -42,5 +45,8 @@ def upload(request):
 def transfer(request):
 	return render_to_response('transfer.html')
 	
-def server_manage(request):
-	return render_to_response('server_manage.html')
+def host_manage(request):
+	return render_to_response('host_manage.html')
+	
+def xmpp_manage(request):
+	return render_to_response('xmpp_manage.html')

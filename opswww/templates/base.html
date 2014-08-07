@@ -1,10 +1,39 @@
 <!DOCTYPE html>
+
 <html lang="en">
   	<head>
     	<meta charset="utf-8">
     	<meta name="description" content="">
     	
     	<title>OPSWWW</title>
+    	<style type="text/css">
+    		
+    		#overhead {
+    			height:100px;
+    			border-style:groove;
+    		}
+    		
+    		#main {
+    			margin-top:10px;
+    			border-style:groove;
+    			height:500px;
+    		}
+    		
+    		#main-sidebar {
+    			border-style:groove;
+    			width:200px;
+    			float:left;
+    		}
+    		
+    		#main-sidebar ul {
+    			list-style-type:none;
+    		}
+    		
+    		#main-content {
+    			border-style:groove;	
+    			float:left;
+    		}
+    	</style>
     	<!--
     	<link rel="stylesheet" type="text/css" href="xxx.css">
     	-->
@@ -17,11 +46,15 @@
 		</div>
 		
 		<div id="main">
-			<div id="main-left">
-				<h1>main-left</h1>
+			<div id="main-sidebar">
+				<h4>main-sidebar</h4>
+				<ul>
+					<li><a href="/host_manage">Host Manage</a></li>
+					<li><a href="/xmpp_manage">XMPP Manage</a></li>
+				</ul>
 			</div>
 			
-			<div id="main-right">
+			<div id="main-content">
 				{% block page-content %}{% endblock %}
 			</div>
 		</div>

@@ -7,6 +7,9 @@ from mimetypes import guess_type
 import settings
 import os
 
+from models import *
+from sshapi import *
+
 
 def index_page(request):
 	return render_to_response('index.html')
@@ -46,7 +49,25 @@ def transfer(request):
 	return render_to_response('transfer.html')
 	
 def host_manage(request):
-	return render_to_response('host_manage.html')
+	kvnull = Hostlist.objects.filter(kernel_version='')
+	osnull = Hostlist.objects.filter(os_version='')
+	if kvnull:
+		shell_command = 'uname -s -r'
+		for host in kvnull:
+			return_value = runCommand(host.ip, host.ssh_port, host.username, host.root_password, shell_command)
+			host.kernel_version = return_value
+			host.save()
+			
+	#only CentOS
+	if osnull:
+		shell_command = 'cat /etc/redhat-release'
+		for host in osnull:
+			return_value = runCommand(host.ip, host.ssh_port, host.username, host.root_password, shell_command)
+			host.os_version = return_value
+			host.save()
+	
+	hl = Hostlist.objects.all()
+	return render_to_response('host_manage.html', {'hl':hl})
 	
 def xmpp_manage(request):
 	return render_to_response('xmpp_manage.html')

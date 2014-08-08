@@ -33,6 +33,10 @@ TEMPLATE_DIRS = (
 	os.path.join(BASE_DIR, 'opswww/templates'),
 )
 
+STATICFILES_DIRS = (
+	os.path.join(BASE_DIR, 'opswww/css'),
+)
+
 
 # Application definition
 

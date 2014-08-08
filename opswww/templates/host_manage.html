@@ -1,4 +1,15 @@
 {% extends "base.html" %}
 {% block page-content %}
 	<h2>It is host_manage page</h2>
+	<table border="1">
+	{% for h in hl %}
+		<tr>
+			<td>{{ h.server_class }}</td>
+			<td>{{ h.ip }}</td>
+			<td>{{ h.hostname }}</td>
+			<td>{{ h.os_version }}</td>
+			<td>{{ h.kernel_version }}</td>
+		</tr>
+	{% endfor %}
+	</table>
 {% endblock %}

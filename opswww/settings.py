@@ -8,12 +8,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# Build paths inside the project like this: os.path.join(PROJECT_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+PROJECT_DIR = os.path.dirname(os.path.dirname(__file__))
 
-DOWNLOAD_DIR = os.path.join(BASE_DIR, 'resource/download')
-UPLOAD_DIR = os.path.join(BASE_DIR, 'resource/upload')
+DOWNLOAD_DIR = os.path.join(PROJECT_DIR, 'resource/download')
+UPLOAD_DIR = os.path.join(PROJECT_DIR, 'resource/upload')
 
 
 # Quick-start development settings - unsuitable for production
@@ -30,12 +30,9 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 TEMPLATE_DIRS = (
-	os.path.join(BASE_DIR, 'opswww/templates'),
+	os.path.join(PROJECT_DIR, 'opswww/templates'),
 )
 
-STATICFILES_DIRS = (
-	os.path.join(BASE_DIR, 'opswww/css'),
-)
 
 
 # Application definition
@@ -95,3 +92,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+	os.path.join(PROJECT_DIR, 'opswww/static'),
+)

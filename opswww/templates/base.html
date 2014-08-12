@@ -6,35 +6,38 @@
     	<meta name="description" content="">
     	
     	<title>OPSWWW</title>
+    	
     	<!--
     	<style type="text/css">	
     	</style>
     	-->
     	
-    	
-    	<link rel="stylesheet" type="text/css" href="base.css">
+    	<link rel="stylesheet" type="text/css" href="/static/css/base.css">
    
    	</head>
    	    
 
   	<body>
-		<div id="overhead">
-			<h1>overhead</h1>
-		</div>
-		
-		<div id="main">
-			<div id="main-sidebar">
-				<h4>main-sidebar</h4>
-				<ul>
-					<li><a href="/host_manage">Host Manage</a></li>
-					<li><a href="/xmpp_manage">XMPP Manage</a></li>
-				</ul>
+  		<div id="container">
+			<div id="overhead">
+				<div id="branding">
+					<h1>OPSWWW</h1>
+				</div>
 			</div>
 			
-			<div id="main-content">
-				{% block page-content %}{% endblock %}
+			<div id="main">
+				<div id="main-sidebar">
+					<h4>main-sidebar</h4>
+					<ul>
+						<li><a href="/host_manage">Host Manage</a></li>
+						<li><a href="/xmpp_manage">XMPP Manage</a></li>
+					</ul>
+				</div>
+				
+				<div id="main-content">
+					{% block page-content %}{% endblock %}
+				</div>
 			</div>
-		</div>
-		
+		</div>	
  	</body>
 </html>

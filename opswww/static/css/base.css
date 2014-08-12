@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: "Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+    color: #333;
+    background: #fff;
+}
+
+#container {
+    position: relative;
+    width: 100%;
+    min-width: 760px;
+    padding: 0;
+}
+
+#branding h1 {
+    padding: 0 10px;
+    font-size: 18px;
+    margin: 8px 0;
+    font-weight: normal;
+    color: #f4f379;
+}
+			
+#overhead {
+	background: #417690;
+    color: #ffc;
+    overflow: hidden;
+}
+
+#main {
+	margin-top:10px;
+	border-style:groove;
+	height:500px;
+}
+
+#main-sidebar {
+	border-style:groove;
+	width:200px;
+	float:left;
+}
+
+#main-sidebar ul {
+	list-style-type:none;
+}
+
+
+
+
+
+
+/* SORTABLE TABLES */
+
+thead th {
+    padding: 2px 5px;
+    line-height: normal;
+}
+
+thead th a:link, thead th a:visited {
+    color: #666;
+}
+
+
+
+thead th.sorted .text {
+	padding-right: 42px;
+}
+
+table thead th .text span {
+    padding: 2px 5px;
+    display:block;
+}
+
+table thead th .text a {
+    display: block;
+    cursor: pointer;
+    padding: 2px 5px;
+}
+
+
+
+thead th.sorted a.sortremove {
+    visibility: hidden;
+}
+
+table thead th.sorted:hover a.sortremove {
+    visibility: visible;
+}
+
+table thead th.sorted .sortoptions {
+    display: block;
+    padding: 4px 5px 0 5px;
+    float: right;
+    text-align: right;
+}
+
+table thead th.sorted .sortpriority {
+    font-size: .8em;
+    min-width: 12px;
+    text-align: center;
+    vertical-align: top;
+}
+
+table thead th.sorted .sortoptions a {
+    width: 14px;
+    height: 12px;
+    display: inline-block;
+}
+
+
+/* ORDERABLE TABLES */
+
+table.orderable tbody tr td:hover {
+    cursor: move;
+}
+
+table.orderable tbody tr td:first-child {
+    padding-left: 14px;
+    background-image: url(../img/nav-bg-grabber.gif);
+    background-repeat: repeat-y;
+}
+
+table.orderable-initalized .order-cell, body>tr>td.order-cell {
+    display: none;
+}

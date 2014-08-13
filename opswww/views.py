@@ -71,3 +71,6 @@ def host_manage(request):
 	
 def xmpp_manage(request):
 	return render_to_response('xmpp_manage.html')
+	
+def file_transfer(request):
+	return render_to_response('file_transfer.html')

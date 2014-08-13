@@ -1,71 +1,51 @@
 {% extends "base.html" %}
 {% block page-content %}
-	<!--
-	<h2>It is host_manage page</h2>
-	<table border="1">
-	{% for h in hl %}
-		<tr>
-			<td>{{ h.server_class }}</td>
-			<td>{{ h.ip }}</td>
-			<td>{{ h.hostname }}</td>
-			<td>{{ h.os_version }}</td>
-			<td>{{ h.kernel_version }}</td>
-		</tr>
-	{% endfor %}
+	
+	<table id="result_list">
+		<thead>
+			<tr>
+				<th scope="col"  class="action-checkbox-column">
+   					<div class="text"><span><input type="checkbox" id="action-toggle" /></span></div>
+				</th>
+				
+				<th scope="col"  class="sortable column-ip">
+   					<div class="text">Ip</div>
+				</th>
+
+				<th scope="col"  class="sortable column-hostname">
+   					<div class="text">Hostname</div>
+				</th>
+				
+				<th scope="col"  class="sortable column-server_class sorted ascending">
+   					<div class="text">Server class</div>
+				</th>
+
+				<th scope="col"  class="sortable column-os_version">
+   					<div class="text">Os version</div>
+				</th>
+				
+				<th scope="col"  class="sortable column-kernel_version">
+   					<div class="text">Kernel version</div>
+				</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+		
+		{% for h in hl %}
+			<tr class="row1">
+				<td class="action-checkbox">
+					<input class="action-select" name="selected_action" type="checkbox" value="" />
+				</td>
+				<th><a href="">{{ h.ip }}</a></th>
+				<td>{{ h.hostname }}</td>
+				<td>{{ h.server_class }}</td>
+				<td>{{ h.os_version }}</td>
+				<td>{{ h.kernel_version }}</td>
+			</tr>
+		{% endfor %}
+		
+		</tbody>
 	</table>
-	-->
-	
-	
-	
-	<div class="results">
-		<table id="result_list">
-			<thead>
-				<tr>
-
-					<th scope="col"  class="action-checkbox-column">
-   						<div class="text"><span><input type="checkbox" id="action-toggle" /></span></div>
-   						
-					</th>
-					
-					<th scope="col"  class="sortable column-ip">
-   						<div class="text">Ip</div>
-					</th>
-
-					<th scope="col"  class="sortable column-hostname">
-   						<div class="text">Hostname</div>
-					</th>
-					
-					<th scope="col"  class="sortable column-server_class sorted ascending">
-   						<div class="text">Server class</div>
-					</th>
-
-					<th scope="col"  class="sortable column-os_version">
-   						<div class="text">Os version</div>
-					</th>
-					
-					<th scope="col"  class="sortable column-kernel_version">
-   						<div class="text">Kernel version</div>
-					</th>
-				</tr>
-			</thead>
-			
-			<tbody>
-			{% for h in hl %}
-				<tr class="row1">
-					<td class="action-checkbox">
-						<input class="action-select" name="selected_action" type="checkbox" value="" />
-					</td>
-					<th><a href="">{{ h.ip }}</a></th>
-					<td>{{ h.hostname }}</td>
-					<td>{{ h.server_class }}</td>
-					<td>{{ h.os_version }}</td>
-					<td>{{ h.kernel_version }}</td>
-				</tr>
-			{% endfor %}
-
-			</tbody>
-		</table>
-	</div>
-
 
 {% endblock %}

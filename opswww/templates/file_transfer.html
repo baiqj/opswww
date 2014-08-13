@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block page-content %}
+
+	<div id="file-transfer-main">
+		
+		<div id="ft-hostlist">
+			
+		</div>
+
+    	<div id="ft-left">
+
+        	<div id="file-for-select">File List:</div>
+
+        	<select size="10"  multiple="MULTIPLE" id="filelist"></select>
+        	<br />
+        	<button  id="chooseall" class="btn btn-primary"> Choose All </button>
+
+		</div>
+
+        <div id="ft-middle">
+            <button  id="movetoright" class="btn btn-primary btn-small"> >> </button>
+           	<br />
+            <button  id="movetoleft"  class="btn btn-primary btn-small"> << </button>
+		</div>
+
+        <div id="ft-right">
+
+            <div id="file-selected">File Selected:</div>
+            
+            <select size="10" id="selected_files"></select>
+            <br />
+            <button  id="removeall" class="btn btn-primary"> Remove All </button>
+			<div id="remotepath">
+            	Remote Path: <input type="text" id="remotepath" value=""/>
+            </div>
+
+    	</div>
+
+  	</div>
+	
+{% endblock %}

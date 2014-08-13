@@ -18,3 +18,4 @@ if not output:
 	print 'success'
 else:
 	print output
+

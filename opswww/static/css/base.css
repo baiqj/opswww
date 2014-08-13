@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    width:99.9%;
     font-size: 12px;
     font-family: "Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
     color: #333;
@@ -10,8 +11,14 @@ body {
 #container {
     position: relative;
     width: 100%;
-    min-width: 760px;
+    min-width: 800px;
     padding: 0;
+}
+
+#overhead {
+	background: #417690;
+    color: #ffc;
+    overflow: hidden;
 }
 
 #branding h1 {
@@ -21,24 +28,18 @@ body {
     font-weight: normal;
     color: #f4f379;
 }
-			
-#overhead {
-	background: #417690;
-    color: #ffc;
-    overflow: hidden;
-}
 
 #main {
-	margin-top:20px;
-	height:500px;
+	margin-top:10px;
+	height:650px;        /* Show be commented */
+	border:solid 2px;
+	padding:2px;
 }
 
 #main-navigation {
 	position:absolute;
-	border:solid 2px;
-	border-color:#417690;
+	border:solid 2px #417690;
 	width:200px;
-	height:100%;
 }
 
 #main-navigation div {
@@ -56,11 +57,16 @@ body {
 }
 
 #main-content {
-	margin-left:220px;
+	background-color:#BBFFFA;
+	margin-left:210px;
 	height:100%
 }
 
 
+
+
+
+/*host manage*/
 table {
 	text-align:left;
 	width:900px;
@@ -68,7 +74,34 @@ table {
 
 
 
-/*file_transfer*/
+/*file transfer*/
+
+#file-transfer-main {
+	border:solid 2px #417690;
+	width:100%;
+	height:100%;
+}
+
+#ft-hostlist {
+	float:left;
+	min-width:20px;
+	margin:5px;
+	display:inline-block;
+	width:200px;
+	height:98%;
+	border:solid 2px #00FF00;
+}
+
+#ft-filelist {
+}
+
+#ft-remotepath {
+}
+
+
+
+
+/*
 
 #file-transfer-main {
 	border:1px solid #ccc;
@@ -152,3 +185,5 @@ table {
 	width:60%;
 	margin-left:10px
 }
+
+*/

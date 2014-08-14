@@ -76,8 +76,10 @@ def xmpp_manage(request):
 def file_transfer(request):
 	if request.GET:
 		print request.GET
-		#request.GET['selected']
-		#request.GET['remotepath']
+		##<QueryDict: {u'selected_hosts': [u'3', u'4'], u'remotepath': [u'/home'], u'selected_file': [u'IMG_1181.JPG', u'access_api_192_59.log']}>
+		#request.GET['selected_hosts']
+		#sftpPut(host, port, username, password, src_path, dst_path):
+		
 				
 	hl = Hostlist.objects.all()
 	filelist = []

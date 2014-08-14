@@ -1,1 +1,3 @@
 *.pyc
+/resource/upload/*
+/resource/download/*

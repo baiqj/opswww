@@ -57,7 +57,7 @@ body {
 }
 
 #main-content {
-	background-color:#BBFFFA;
+	/*background-color:#BBFFFA;*/
 	margin-left:210px;
 	height:100%
 }
@@ -84,20 +84,43 @@ table {
 
 #ft-hostlist {
 	float:left;
-	min-width:20px;
+	min-width:50px;
 	margin:5px;
 	display:inline-block;
-	width:200px;
-	height:98%;
+	width:150px;
+	height:500px;    /* Show be commented */
+	border:solid 2px #00FF00;
+}
+
+#ft-fr {
+	float:left;
+	margin:5px;
+	width:300px;
+	height:500px;    /* Show be commented */
 	border:solid 2px #00FF00;
 }
 
 #ft-filelist {
+	height:70%;
+	border:solid 2px #00FF00;
 }
+
 
 #ft-remotepath {
+	margin-top:10px;
+	height:16%;
+	border:solid 2px #00FF00;
 }
 
+#ft-remotepath input {
+	margin-left:6px;
+	width:60%;
+}
+
+#ft-submit {
+	float:right;
+	margin-right:30px;
+}
 
 
 

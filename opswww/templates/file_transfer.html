@@ -1,22 +1,36 @@
 {% extends "base.html" %}
 {% block page-content %}
-
+	
 	<div id="file-transfer-main">
+	<form action="" method="GET">
 		
 		<div id="ft-hostlist">
-			
+			{% for host in hl %}
+				<input type="checkbox" name="selected_hosts" value="{{host.id}}"/>{{ host.hostname }}<br />			
+			{% endfor %}
 		</div>
 		
-		<div id="ft-filelist">
+		<div id="ft-fr">
+			<div id="ft-filelist">
+				<select name="selected_file" size="20" multiple="multiple">
+					{% for file in filelist %}
+						<option value="{{ file.fname }}" style="font-size:5px"> {{file.fname}} -.- {{file.ftime}} | {{file.fsize}}(KB) </option>	<br />
+					{% endfor %}
+				</select>
+			</div>
 			
+			<div id="ft-remotepath">
+				<h5> Remote Path: <input name="remotepath" type="text" id="remotepath"/></h5>
+			</div>
+			
+			<div id="ft-submit">
+				<input type="submit" value="upload"/>
+			</div>
 		</div>
 		
-		<div id="ft-remotepath">
-			
-		</div>
-		
-
+	</form>
   	</div>
+  	
   	
   	
   	<!--

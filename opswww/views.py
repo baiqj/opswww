@@ -6,6 +6,7 @@ from django import forms
 from mimetypes import guess_type
 import settings
 import os
+import time
 
 from models import *
 from sshapi import *
@@ -73,4 +74,16 @@ def xmpp_manage(request):
 	return render_to_response('xmpp_manage.html')
 	
 def file_transfer(request):
-	return render_to_response('file_transfer.html')
+	if request.GET:
+		print request.GET
+		#request.GET['selected']
+		#request.GET['remotepath']
+				
+	hl = Hostlist.objects.all()
+	filelist = []
+	for f in os.listdir(settings.UPLOAD_DIR):
+		f_abs = os.path.join(settings.UPLOAD_DIR, f)
+		fsize = int(os.path.getsize(f_abs))/1024
+		ftime = time.strftime('%Y-%m-%d %H:%M',time.localtime(os.stat(f_abs).st_mtime))
+		filelist.append({'fname':f, 'ftime':ftime, 'fsize':fsize})
+	return render_to_response('file_transfer.html', {'hl':hl, 'filelist':filelist})

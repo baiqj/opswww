@@ -7,7 +7,9 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'opswww.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-	url(r'^$', 'opswww.views.index_page'),
+	url(r'^$', 'opswww.views.indexPage'),
+	
+	url(r'^test/$', 'opswww.views.testPage'),
 	
 	url(r'^host_manage/$', 'opswww.views.host_manage'),
 	url(r'^xmpp_manage/$', 'opswww.views.xmpp_manage'),

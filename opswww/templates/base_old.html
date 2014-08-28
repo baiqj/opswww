@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="">
+    	
+    	<title>OPSWWW</title>
+    	
+    	<!--
+    	<style type="text/css">	
+    	</style>
+    	-->
+    	
+    	<link rel="stylesheet" type="text/css" href="/static/css/base.css">
+   	
+   	</head>
+   	    
+
+  	<body>
+  		<div id="container">
+			<div id="overhead">
+				<div id="branding">
+					<h1>OPSWWW</h1>
+				</div>
+			</div>
+			
+			<div id="main">
+				<div id="main-navigation">
+					<div>Navigation</div>
+					<ul>
+						<li><a href="/host_manage">Host Manage</a></li>
+						<li><a href="/file_transfer">File Transfer</a></li>
+						<li><a href="/xmpp_manage">XMPP Manage</a></li>
+					</ul>
+				</div>
+				
+				<div id="main-content">
+					{% block page-content %}{% endblock %}
+				</div>
+			</div>
+		</div>	
+ 	</body>
+</html>

@@ -11,7 +11,7 @@ urlpatterns = patterns('',
 	
 	url(r'^test/$', 'opswww.views.testPage'),
 	
-	url(r'^host_manage/$', 'opswww.views.host_manage'),
+	url(r'^hostlist/$', 'opswww.views.hostList'),
 	url(r'^xmpp_manage/$', 'opswww.views.xmpp_manage'),
 	url(r'^file_transfer/$', 'opswww.views.file_transfer'),
 	

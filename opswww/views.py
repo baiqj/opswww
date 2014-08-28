@@ -17,7 +17,7 @@ def indexPage(request):
 
 ''' TEST PAGE '''    
 def testPage(request):
-    return render_to_response('testpage.html')
+    return render_to_response('base.html')
 
 def download(request, filename):
 
@@ -51,9 +51,9 @@ def upload(request):
 ##  test area  ##
 
 def transfer(request):
-    return render_to_response('transfer.html')
+    return render_to_response('file_transfer.html')
 	
-def host_manage(request):
+def hostList(request):
     kvnull = Hostlist.objects.filter(kernel_version='')
     osnull = Hostlist.objects.filter(os_version='')
     if kvnull:
@@ -72,7 +72,7 @@ def host_manage(request):
             host.save()
 	
     hl = Hostlist.objects.all()
-    return render_to_response('host_manage.html', {'hl':hl})
+    return render_to_response('host_list.html', {'hl':hl})
 	
 def xmpp_manage(request):
     return render_to_response('xmpp_manage.html')

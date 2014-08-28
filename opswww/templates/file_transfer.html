@@ -1,10 +1,13 @@
 {% extends "base.html" %}
+
 {% block page-content %}
-	
+
+    <h2 class="sub-header">File Transfer</h2>
+    
 	<div id="file-transfer-main">
 	<form action="" method="GET">
 		
-		<div id="ft-hostlist">
+		<div id="ft-hostlist"> 
 			{% for host in hl %}
 				<input type="checkbox" name="selected_hosts" value="{{host.id}}"/>{{ host.hostname }}</><br />			
 			{% endfor %}

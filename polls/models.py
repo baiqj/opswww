@@ -16,11 +16,3 @@ class Choice(models.Model):
     def __unicode__(self):
         return self.choice_text
 
-
-
-
-from django.utils import timezone
-p = Poll(question = 'What City', pub_date=timezone.now())
-
-Poll.objects.get(pub_date__year=cyear)
-Poll.objects.filter(id__range=(1,3))

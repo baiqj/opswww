@@ -5,7 +5,7 @@ class HostlistAdmin(admin.ModelAdmin):
 	
 	#inlines = [ChoiceInline]
 	
-	list_display = ('ip','hostname','server_class','os_version','kernel_version')
+	list_display = ('ip','hostname','ssh_port','os_version','kernel_version')
 	#list_filter = ['hostname']
 	search_fields = ['hostname']
 	

@@ -1,8 +1,9 @@
 from django.core.servers.basehttp import FileWrapper
 from django.core.urlresolvers import reverse
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, StreamingHttpResponse
 from django.shortcuts import render_to_response, RequestContext
 from django import forms
+from models import *
 from mimetypes import guess_type
 import settings
 import os
@@ -14,6 +15,74 @@ from sshapi import *
 
 def indexPage(request):
     return render_to_response('index.html')
+
+def hostList(request):
+    '''
+    kvnull = Hostlist.objects.filter(kernel_version='')
+    osnull = Hostlist.objects.filter(os_version='')
+    if kvnull:
+        shell_command = 'uname -s -r'
+        for host in kvnull:
+            return_value = runCommand(host.ip, host.ssh_port, host.username, host.root_password, shell_command)
+            host.kernel_version = return_value
+            host.save()
+			
+	#only CentOS
+    if osnull:
+        shell_command = 'cat /etc/redhat-release'
+        for host in osnull:
+            return_value = runCommand(host.ip, host.ssh_port, host.username, host.root_password, shell_command)
+            host.os_version = return_value
+            host.save()
+    '''
+	
+    hl = Hostlist.objects.all()
+    return render_to_response('host_list.html', {'hl':hl})
+
+def flushHostList(request):
+    
+    from remote_host_status import perfStatus
+    
+    host = '10.0.0.81'
+    port = 22
+    username = 'root'
+    password = '123456'
+    
+    ssh_args_list = []
+    hostlist_obj = Hostlist.objects.all()
+    for host_obj in hostlist_obj:
+        host = host_obj.ip
+        port = host_obj.ssh_port
+        username = host_obj.username
+        password = host_obj.root_password
+        hpup = (host, port, username, password)
+        ssh_args_list.append(hpup)
+                
+    #   perfStatus(host, port, username, password)
+    '''
+        hostname
+        kernel_version
+        os_version
+        ping_packet_loss
+        ping_delay
+        uptime
+        loadavg
+        meminfo
+        cpu_procs
+        last_check
+    '''
+   
+    status_dict = perfStatus(host, port, username, password)
+    
+    #Table Output
+    response_str = '<table border="1">'
+    for key in status_dict:
+        response_str += ('<tr>' + '<td>' + str(key) + '</td>' + '<td>' + str(status_dict[key]) + '</td>' + '</tr>' + '<br/>')
+    response_str += '</table>'
+    
+    return HttpResponse(ssh_args_list)
+    
+
 
 ''' TEST PAGE '''    
 def testPage(request):
@@ -53,26 +122,7 @@ def upload(request):
 def transfer(request):
     return render_to_response('file_transfer.html')
 	
-def hostList(request):
-    kvnull = Hostlist.objects.filter(kernel_version='')
-    osnull = Hostlist.objects.filter(os_version='')
-    if kvnull:
-        shell_command = 'uname -s -r'
-        for host in kvnull:
-            return_value = runCommand(host.ip, host.ssh_port, host.username, host.root_password, shell_command)
-            host.kernel_version = return_value
-            host.save()
-			
-	#only CentOS
-    if osnull:
-        shell_command = 'cat /etc/redhat-release'
-        for host in osnull:
-            return_value = runCommand(host.ip, host.ssh_port, host.username, host.root_password, shell_command)
-            host.os_version = return_value
-            host.save()
-	
-    hl = Hostlist.objects.all()
-    return render_to_response('host_list.html', {'hl':hl})
+
 	
 def xmpp_manage(request):
     return render_to_response('xmpp_manage.html')
@@ -83,10 +133,10 @@ def file_transfer(request):
         ##<QueryDict: {u'selected_hosts': [u'3', u'4'], u'remotepath': [u'/home'], u'selected_file': [u'IMG_1181.JPG', u'access_api_192_59.log']}>
         #request.GET['selected_hosts']
         #sftpPut(host, port, username, password, src_path, dst_path):
-		
 				
     hl = Hostlist.objects.all()
     filelist = []
+    
     for f in os.listdir(settings.UPLOAD_DIR):
         f_abs = os.path.join(settings.UPLOAD_DIR, f)
         fsize = int(os.path.getsize(f_abs))/1024

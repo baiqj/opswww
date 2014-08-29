@@ -36,24 +36,26 @@
             
             <thead>
                 <tr>
-                    <th>Status</th>
                     <th>#IP</th>
                     <th>Host name</th>
-                    <th>Server class</th>
-                    <th>Packet loss</th>
-                    <th>Ping delay</th>
+                    <th>Uptime</th>
+                    <th>Loadavg</th>
+                    <th>Ping</th>
+                    <th>Meminfo</th>
+                    <th>Last check</th>
                 </tr>
             </thead>
             
             <tbody>
             {% for h in hl %}
 			    <tr>
-			        <td></td>
 			        <td><a href='#'>{{ h.ip }}</a></td>
 				    <td>{{ h.hostname }}</td>
-				    <td>{{ h.server_class }}</td>
-				    <td>{{ h.ping_packet_loss_rate }}</td>
-				    <td>{{ h.ping_delay }}</td>
+				    <td>{{ h.uptime }}</td>
+				    <td>{{ h.loadavg }}</td>
+				    <td>{{ h.ping_packet_loss }}%,time={{ h.ping_delay }}</td>
+				    <td>{{ h.meminfo }}</td>
+				    <td>{{ h.last_check }}</td>
 			    </tr>
 		    {% endfor %}
             </tbody>

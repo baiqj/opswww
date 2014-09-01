@@ -36,9 +36,9 @@
             
             <thead>
                 <tr>
-                    <th>#IP</th>
+                    <th>IP</th>
                     <th>Host name</th>
-                    <th>Uptime</th>
+                    <th>Uptime(d)</th>
                     <th>Loadavg</th>
                     <th>Ping</th>
                     <th>Meminfo</th>
@@ -49,7 +49,7 @@
             <tbody>
             {% for h in hl %}
 			    <tr>
-			        <td><a href='#'>{{ h.ip }}</a></td>
+			        <td><a href='/hostlist/{{ h.id }}'>{{ h.ip }}</a></td>
 				    <td>{{ h.hostname }}</td>
 				    <td>{{ h.uptime }}</td>
 				    <td>{{ h.loadavg }}</td>

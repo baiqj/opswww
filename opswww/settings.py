@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 
 TEMPLATE_DIRS = (
 	os.path.join(PROJECT_DIR, 'opswww/templates'),
+	#polls App
+	os.path.join(PROJECT_DIR, 'polls/templates'),
 )
 
 

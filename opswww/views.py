@@ -8,6 +8,8 @@ from mimetypes import guess_type
 import settings
 import os
 import time
+import Queue
+import threading
 
 from models import *
 from sshapi import *
@@ -36,42 +38,53 @@ def hostList(request):
             host.save()
     '''
 	
-    hl = Hostlist.objects.all()
-    return render_to_response('host_list.html', {'hl':hl})
+    hostlist_obj = Hostlist.objects.all()
+    return render_to_response('host_list.html', {'hl':hostlist_obj})
+        
+def hostDetail(request, host_id):
+    try:
+        host_obj = Hostlist.objects.get(id = host_id)
+    except:
+        print '404'
+        
+    context = {'host_obj':host_obj}
+    return render_to_response('host_detail.html', context)
 
 def flushHostList(request):
     
     from remote_host_status import perfStatus
+    
+    #set the num of thread
+    nthread = 5
     
     host = '10.0.0.81'
     port = 22
     username = 'root'
     password = '123456'
     
-    ssh_args_list = []
+    host_queue = Queue.Queue()
     hostlist_obj = Hostlist.objects.all()
+    
     for host_obj in hostlist_obj:
         host = host_obj.ip
         port = host_obj.ssh_port
         username = host_obj.username
         password = host_obj.root_password
-        hpup = (host, port, username, password)
-        ssh_args_list.append(hpup)
+        hpup = [host, port, username, password]
+        host_queue.put(hpup)
                 
-    #   perfStatus(host, port, username, password)
+    thread_list = []
+    for i in range(nthread):
+        th = threading.Thread(target = perfStatus, args = (host_queue,))
+        thread_list.append(th)
+        
+    for i in range(nthread):
+        thread_list[i].start()
+        
+    for i in range(nthread):
+        thread_list[i].join()
+    
     '''
-        hostname
-        kernel_version
-        os_version
-        ping_packet_loss
-        ping_delay
-        uptime
-        loadavg
-        meminfo
-        cpu_procs
-        last_check
-    '''
-   
     status_dict = perfStatus(host, port, username, password)
     
     #Table Output
@@ -79,8 +92,9 @@ def flushHostList(request):
     for key in status_dict:
         response_str += ('<tr>' + '<td>' + str(key) + '</td>' + '<td>' + str(status_dict[key]) + '</td>' + '</tr>' + '<br/>')
     response_str += '</table>'
+    '''
     
-    return HttpResponse(ssh_args_list)
+    return render_to_response('host_list.html', {'hl':hostlist_obj})
     
 
 

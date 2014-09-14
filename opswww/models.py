@@ -39,3 +39,9 @@ class Hostlist(models.Model):
         {'ping': (100, None, None)}           # KeyError
 '''
 
+class HostlistSSH(models.Model):
+    
+    ip = models.IPAddressField(max_length = 15)
+    ssh_port = models.IntegerField()
+    username = models.CharField(max_length = 10)
+    root_password = models.CharField(max_length = 30)

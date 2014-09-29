@@ -1,7 +1,6 @@
 from django.db import models
 
 class Hostlist(models.Model):
-    
 	ip = models.IPAddressField(max_length = 15)
 	hostname = models.CharField(max_length = 30, blank = True)
 	server_class = models.CharField(max_length = 30, blank = True)
@@ -39,9 +38,27 @@ class Hostlist(models.Model):
         {'ping': (100, None, None)}           # KeyError
 '''
 
-class HostlistSSH(models.Model):
-    
+class Keyforssh(models.Model):
     ip = models.IPAddressField(max_length = 15)
     ssh_port = models.IntegerField()
     username = models.CharField(max_length = 10)
     root_password = models.CharField(max_length = 30)
+    
+    def __unicode__(self):
+        return self.ip
+
+
+class Serverlist(models.Model):
+    host = models.ForeignKey(Hostlist)
+    servername = models.CharField(max_length = 30)
+    health = models.IntegerField(null = True, blank = True)
+    
+    def __unicode__(self):
+        return self.servername
+    
+
+class OptLog(models.Model):
+    optime = models.DateTimeField()
+    optclass = models.CharField(max_length = 20)
+    verbose = models.CharField(max_length = 100)
+    

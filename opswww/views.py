@@ -44,11 +44,25 @@ def hostList(request):
 def hostDetail(request, host_id):
     try:
         host_obj = Hostlist.objects.get(id = host_id)
+        context = {'host_obj':host_obj}
+        return render_to_response('host_detail.html', context)
     except:
-        print '404'
-        
-    context = {'host_obj':host_obj}
-    return render_to_response('host_detail.html', context)
+        return render_to_response('base_error.html')
+    
+    
+    
+def serverList(request):
+    serverlist_obj = Serverlist.objects.all()
+    return render_to_response('server_list.html', {'sl':serverlist_obj})
+
+def serverDetail(request, server_id):
+    try:
+        server_obj = Serverlist.objects.get(id = server_id)
+        context = {'server_obj':server_obj}
+        return render_to_response('server_detail.html', context)
+    except:
+        return render_to_response('base_error.html')
+    
 
 def flushHostList(request):
     
@@ -138,8 +152,8 @@ def transfer(request):
 	
 
 	
-def xmpp_manage(request):
-    return render_to_response('xmpp_manage.html')
+def tigase_manage(request):
+    return render_to_response('tigase_manage.html')
 	
 def file_transfer(request):
     if request.GET:

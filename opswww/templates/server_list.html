@@ -1,0 +1,32 @@
+﻿{% extends "base.html" %}
+
+{% block page-content %}
+
+    <h2 class="sub-header">Server List</h2>     
+    
+    <div class="table-responsive">
+        <table class="table table-striped">
+            
+            <thead>
+                <tr>
+                    <th>Server name</th>
+                    <th>Host</th>
+                    <th>Health</th>
+                </tr>
+            </thead>
+            
+            
+            <tbody>
+            {% for s in sl %}
+			    <tr>
+			        <td><a href='/serverlist/{{ s.id }}'>{{ s.servername }}</a></td>
+				    <td>{{ s.host }}</td>
+				    <td>{{ s.health }}</td>
+			    </tr>
+		    {% endfor %}
+            </tbody>
+            
+        </table>
+    </div>
+
+{% endblock %}

@@ -98,3 +98,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
 	os.path.join(PROJECT_DIR, 'opswww/static'),
 )
+
+
+
+###############
+# Custom Area #
+###############
+
+ERROR_LOG = '/var/log/opswww.log'
